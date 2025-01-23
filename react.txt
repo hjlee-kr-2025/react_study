@@ -1,1 +1,54 @@
 <<< react(리액트)  >>>
+HTML, CSS, JAVASCRIPT
+
+MPA(Multi Page Application) vs SPA(Single Page Application)
+MPA: 한 페이지당 HTML문서가 하나씩 있는것
+SPA: HTML문서 하나에 내용을 바꿔가면서 다른페이지 인것처럼 사용하는 방식
+
+DOM
+react: virtual DOM => DOM을 가상의 공간에 만들고 HTML DOM 과 교체하는 방식으로 운용됩니다.
+
+react -> v19에서 create-react-app 을 실행하면 오류발생
+=> 대안
+npm install -g yarn -> 한번만 실행하면 다음부터는 안해도 됩니다.(yarn설치 명령)
+yarn create react-app my-app
+으로 실행해서 사용하겠습니다.
+my-app 은 프로젝트 명입니다. -> 혼자서생성해서 실습하시려면 이 이름만 변경해서 사용하시면 됩니다.
+
+ch03 JSX(JavaScript and XML)
+const element = <h1>Hello, World!!</h1>;
+
+JSX코드예)
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.toWhat}</div>;
+  }
+}
+const root = ReactDOM.createRoot(document.getElementById('root));
+root.render(<Hello toWhat="World" />);
+==> JS 코드
+class Hello extends React.Component {
+  rendor() {
+    return React.createElement('div', null, `Hello ${this.props.toWhat}`);
+  }
+}
+const root = ReactDOM.create(document.getElementById('root'));
+root.render(React.createElement(Hello, {toWhat:'World!'}, null));
+
+Javascript:
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, World!'
+)
+==> JSX
+const element = (
+  <h1 className='greeting'>Hello, World!</h1>
+)
+
+리액트가 '<' 를 보는 순간 JSX 로 만들어 졌다라고 생각하고 프로그램이 진행됩니다.
+
+JSX장점
+1. 코드가 간결해집니다.
+2. 가독성이 향상됩니다. (HTML코드와 비슷하다고 느낍니다.)
+3. 보안성이 올라갑니다. (injection Attack을 방어어)
