@@ -15,7 +15,7 @@ yarn create react-app my-app
 으로 실행해서 사용하겠습니다.
 my-app 은 프로젝트 명입니다. -> 혼자서생성해서 실습하시려면 이 이름만 변경해서 사용하시면 됩니다.
 
-ch03 JSX(JavaScript and XML)
+[ch03] JSX(JavaScript and XML)
 const element = <h1>Hello, World!!</h1>;
 
 JSX코드예)
@@ -52,3 +52,23 @@ JSX장점
 1. 코드가 간결해집니다.
 2. 가독성이 향상됩니다. (HTML코드와 비슷하다고 느낍니다.)
 3. 보안성이 올라갑니다. (injection Attack을 방어어)
+
+
+[ch04] 엘리먼트(element) 렌더링
+Element란? 태그, 속성, Text로 이루어져 있는 가장 작은 단위
+자바스크립트에 Element의 형태
+{
+  type: 'button',
+  props: {
+    className: 'bg-green',
+    children: {
+      type: 'b',
+        props: {
+          children: 'Hello, element!'
+        }
+    }
+  }
+}
+<button class="bg-green">
+  <b>Hello, element!</b>
+</button>
