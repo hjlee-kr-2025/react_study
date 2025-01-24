@@ -6,7 +6,10 @@ function Calculation(props) {
   const [count, setCount] = useState(0);
   // todos=[] 의 변수선언
   const [todos, setTodos] = useState([]);
-  const calculation = expensiveCalulation(count);
+  //const calculation = expensiveCalulation(count);
+  const calculation = useMemo(() => expensiveCalulation(count), [count]);
+  ///=> count값이 변경될때만 expensiveCalulation(count) 가 재실행되고,
+  // => 다른값이 변경(todos) 되면 마지막에 계산된 값을 리턴합니다.
 
   const increment = () => {
     setCount((count) => count + 1);
