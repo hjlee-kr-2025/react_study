@@ -7,12 +7,13 @@ import Library from './ch03/Library';
 import Clock from './ch04/Clock';
 import CommentList from './ch05/CommentList';
 import NotificationList from './ch06/NotificationList';
+import Counter from './ch07/Counter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(실행함수, 반복실행시간ms);
 
 root.render(
-    <NotificationList />
+    <Counter />
 );
 
 // If you want to start measuring performance in your app, pass a function
