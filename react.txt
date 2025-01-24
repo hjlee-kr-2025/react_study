@@ -165,3 +165,20 @@ numbers[0];
 7. JSX에는 HTML형식으로 프로그래밍되는데, 모든요소가 시작태그와 종료태그가 있습니다.
 
 
+React는 기본적으로 자바스크립트 코드를 사용합니다.
+그런데 특별히 React.CreateElement() 함수가 실행되는 부분을 조금더 쉽게 코딩하기 위해 JSX를 추가하였습니다.
+JSX예)
+  <div>
+    <h1>글제목</h1>
+    <p>내용</p>
+  </div>
+  ===> 자바스크립트로 변경하면
+  React.CreateElement(
+    'div',null,
+    {React.CreateElement(
+      'h1', null, '글제목'
+    ),
+    React.CreateElement(
+      'p', null, '내용'
+    )}
+  );
