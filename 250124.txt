@@ -3,3 +3,10 @@
 - 함수의 이름이 use로 시작됩니다.
   (예) useState(), useEffect()
 - 개발자가 만들수도 있는데 이름은 use로 시작되도록 만들어야 합니다.
+
+**** useState
+- 형식: const [변수이름, setter함수이름] = useState(초기값);
+- useState로 정의한 변수가 값이 변경되면 렌더링이 다시됩니다.
+- setter함수란? 변수값을 변경시키는 함수
+- useState로 정의한 변수는 값을 직접변경시키는 것이 아니라
+  setter함수를 이용해서 변경합니다.
