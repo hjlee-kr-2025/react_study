@@ -15,12 +15,14 @@ import Toggle from './ch08/Toggle';
 import ConfirmButton from './ch08/ConfirmButton';
 import Football from './ch08/Football';
 import LoginControl from './ch09/LoginControl';
+import MainPage from './ch09/MainPage';
+import Calculation from './ch07/Calculation';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(실행함수, 반복실행시간ms);
 
 root.render(
-    <LoginControl />
+    <Calculation />
 );
 
 // If you want to start measuring performance in your app, pass a function

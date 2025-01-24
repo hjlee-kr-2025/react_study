@@ -104,3 +104,18 @@ true vs false
 - null
 - undefined
 - NaN (not a number)
+
+P279 인라인조건
+1. 인라인 if
+* true && expression   => expression
+* false && expression  => false
+
+2. 인라인 if ~ else => 3항연산자를 이용한 방법
+ {조건 ? 참 : 거짓}
+예)
+  return (
+    <div>
+      이 사용자는 현재 {props.isLoggedIn ? '로그인' : '로그인 하지 않은' } 상태입니다.
+    </div>
+  );
+
