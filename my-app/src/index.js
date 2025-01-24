@@ -9,12 +9,18 @@ import CommentList from './ch05/CommentList';
 import NotificationList from './ch06/NotificationList';
 import Counter from './ch07/Counter';
 import TextInputWithFocusButton from './ch07/TextInputWithFocusButton';
+import Accommodate from './ch07/Accommodate';
+import Toggle1 from './ch08/Toggle1';
+import Toggle from './ch08/Toggle';
+import ConfirmButton from './ch08/ConfirmButton';
+import Football from './ch08/Football';
+import LoginControl from './ch09/LoginControl';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(실행함수, 반복실행시간ms);
 
 root.render(
-    <TextInputWithFocusButton />
+    <LoginControl />
 );
 
 // If you want to start measuring performance in your app, pass a function
