@@ -20,11 +20,14 @@ import Calculation from './ch07/Calculation';
 import LandingPage from './ch09/LandingPage';
 import NumberList from './ch10/NumberList';
 import AttendanceBook from './ch10/AttendanceBook';
+import NameForm from './ch11/NameForm';
+import RequestForm from './ch11/RequestForm';
+import FruitSelect from './ch11/FruitSelect';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(실행함수, 반복실행시간ms);
 root.render(
-    <AttendanceBook />
+    <FruitSelect />
 );
 
 // If you want to start measuring performance in your app, pass a function

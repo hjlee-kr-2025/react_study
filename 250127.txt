@@ -1,3 +1,37 @@
 [ch10] 리스트와 키
 - 리스트를 만들때 사용하는 자료형 ==> 배열
-- 리스트를 만들때 고유한값을 가지도록 합니다.(key) => React규칙칙
+- 리스트를 만들때 고유한값을 가지도록 합니다.(key) => React규칙
+- key를 넣을때 주로, id 또는 index를 활용합니다.
+  예) students.map((students, index) => {
+    return (
+      <li key={index}>{students.name}</li>
+    );
+  });
+  map함수사용시 index로 매개변수를 넘겨주면 index 0, 1, 2, 값을 순서대로 넣어 줍니다.
+
+[ch11] 폼 (Form) - 사용자 입력을 받아서 서버에 전달하는 역할
+- 입력 Element 마다 state를 별도로 관리해서 사용합니다.
+=> 제어 컴포넌트를 사용하면 통합해서 관리합니다.
+
+React에서 폼태그안에서 사용되는 태그들 <input>, <textarea>, <select> 등에서 사용자입력값은 태그의 value속성으로 지정됩니다.
+-- textarea
+**HTML
+  <textarea>이곳에 값이 쓰여집니다</textarea>
+**React
+  <textarea value="이곳에 값이 쓰여집니다." />
+
+-- select
+**HTML - 초기값을 포도로 설정
+  <select>
+    <option value='apple'>사과</option>
+    <option value='banana'>바나나</option>
+    <option value='grape' selected>포도</option>
+    <option value='watermelon'>수박</option>
+  </select>
+**React - 초기값을 포도로 설정
+  <select value='grape'>
+    <option value='apple'>사과</option>
+    <option value='banana'>바나나</option>
+    <option value='grape'>포도</option>
+    <option value='watermelon'>수박</option>
+  </select>
