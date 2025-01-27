@@ -27,8 +27,9 @@ const students = [
 function AttendanceBook(props) {
   return (
     <ul>
-      {students.map((students)=>{
-        return (<li key={students.id}>{students.name}</li>);
+      {students.map((students, index)=>{
+        console.log('index: ', index);
+        return (<li key={index}>{students.name}</li>);
       })}
     </ul>
   );
