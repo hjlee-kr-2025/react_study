@@ -16,12 +16,14 @@ function Header(props) {
 function Nav(props) {
   console.log('props', props);
   console.log(props.topics[0].title);
+  var lis = [];
+  for (let i = 0 ; i<props.topics.length ; i++) {
+    lis.push(<li key={i}><a href={"/read/"+props.topics[i].id}>{props.topics[i].title}</a></li>);
+  }
   return (
     <nav>
       <ol>
-        <li><a href={"/read/"+props.topics[0].id}>{props.topics[0].title}</a></li>
-        <li><a href={"/read/"+props.topics[1].id}>{props.topics[1].title}</a></li>
-        <li><a href={"/read/"+props.topics[2].id}>{props.topics[2].title}</a></li>
+        {lis}
       </ol>
     </nav>
   );
@@ -42,9 +44,9 @@ function Article(props) {
 function App() {
   // retrun 안에 기록된것은 JSX문법으로 작성된 것입니다.
   const topics = [
-    {id:1, title:"HTML",},
-    {id:2, title:"CSS",},
-    {id:3, title:"Javascript",},
+    {id:1, title:"html",},
+    {id:2, title:"css",},
+    {id:3, title:"javascript",},
   ];
   return (
     <div>
