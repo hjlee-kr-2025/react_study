@@ -7,11 +7,17 @@ function SignUp(props) {
   const [name, setName] = useState('');
   // 성별 : gender, 초기값: '남자'
   const [gender, setGender] = useState('남자');
+  // 나이 : age, 초기값: 1
+  const [age, setAge] = useState(1);
 
   const handleSubmit = (event) => {
-    // 입력받은 이름, 성별을 알림창에 출력
-    alert("이름 : " + name + ", 성별 : " + gender);
+    // 입력받은 이름, 성별, 나이를 알림창에 출력
+    alert("이름 : " + name + ", 성별 : " + gender + ", 나이 : " + age);
     event.preventDefault(); // 페이지가 이동하지 않도록
+  };
+
+  const handleGender = (event) => {
+    setGender(event.target.value);
   };
 
   return (
@@ -24,13 +30,19 @@ function SignUp(props) {
       </label>
       <br />
       <label>
-        성별:
-        <select value={gender} onChange={(event) => {
-          setGender(event.target.value);
-        }}>
-          <option value='남자'>남자</option>
-          <option value='여자'>여자</option>
-        </select>
+        <input type='radio' value='남자' checked={gender == '남자'}
+          onChange={handleGender} /> 남자
+      </label>
+      <label>
+        <input type='radio' value='여자' checked={gender == '여자'} 
+          onChange={handleGender} /> 여자
+      </label>
+      <br />
+      <label>
+        나이:
+        <input type='number' value={age} onChange={(event) => {
+          setAge(event.target.value);
+        }} />
       </label>
       <button type="submit">제출</button>
     </form>

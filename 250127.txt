@@ -35,3 +35,7 @@ React에서 폼태그안에서 사용되는 태그들 <input>, <textarea>, <sele
     <option value='grape'>포도</option>
     <option value='watermelon'>수박</option>
   </select>
+
+
+데이터 처리의 4단계 : CRUD 
+- Create(생성), Read(읽기, 가져오기), Update(수정), Delete(삭제)
