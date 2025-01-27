@@ -19,9 +19,9 @@ function Nav(props) {
   return (
     <nav>
       <ol>
-        <li><a href="/read/1">HTML</a></li>
-        <li><a href="/read/2">CSS</a></li>
-        <li><a href="/read/3">Javascript</a></li>
+        <li><a href={"/read/"+props.topics[0].id}>{props.topics[0].title}</a></li>
+        <li><a href={"/read/"+props.topics[1].id}>{props.topics[1].title}</a></li>
+        <li><a href={"/read/"+props.topics[2].id}>{props.topics[2].title}</a></li>
       </ol>
     </nav>
   );
