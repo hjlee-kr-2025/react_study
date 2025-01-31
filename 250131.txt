@@ -61,3 +61,43 @@ value{key1: value1, key2: value2, ...}
 사용법
 const value = useContext(생성된컨텍스트이름);
 const value = useContext(MyContext);
+
+[ch15] 스타일링
+- CSS
+선택자 {
+  속성1: 값1,
+  속성2: 값2,
+  ...
+}
+- 선택자: id선택자: '#id값', class선택자: '.클래스값', 타입선택자(태그): 태그이름 
+
+화면배치(레이아웃)
+div {
+  display: none | block | inline | flex; (배치)
+  visibility: visible | hidden; (화면에 보이게/안보이게)
+  position: static(기본) | fixed(브라우저기준) | relative | absolute;
+}
+none와 hidden의 차이
+- none: 블럭자체가 빠진것
+- hidden: 블럭은 있지만 안보이는것(영역을 차지하고 있습니다.)
+** 폰트와 관계된 속성
+#title {
+  font-family: 사용할 글꼴이름, , ; ,로 구분하여 지정(순서), 여러단어로 되어있는 폰트는 '', "" 묶어서 적어줍니다.
+  font-size: 폰트크기;
+  font-weight: 폰트굵기;
+  font-style: none | italic;
+  text-decoration: none | underline;
+}
+** 컬러
+1. 16진수표현 #fff, #ffffff
+2. rgb()
+3. rgba()
+4. 색상이름 : css3(140개의 색상이름 지원)
+
+=== REACT에서 style을 CSS문법 그대로 적용하도록 만든
+styled-components 라이브러리를 만들었습니다.
+사용하려면 설치를 해야합니다.
+
+yarn add styled-components [enter]
+
+--styled-componets에서는 태그드 탬플릿 리터럴을 사용합니다.
