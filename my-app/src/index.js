@@ -26,12 +26,12 @@ import FruitSelect from './ch11/FruitSelect';
 import Resevation from './ch11/Reservation';
 import SignUp from './ch11/SignUp';
 import Calculator from './ch12/Calculator';
-
+import ProfileCard from './ch13/ProfileCard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(실행함수, 반복실행시간ms);
 root.render(
-    <Calculator />
+    <ProfileCard />
 );
 
 // If you want to start measuring performance in your app, pass a function
