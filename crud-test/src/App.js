@@ -26,8 +26,10 @@ function Nav(props) {
   const lis = [];
   for(let i = 0 ; i < props.topics.length ; i++) {
     let t = props.topics[i];
-    lis.push(<li key={t.id}><a href={'/read/'+t.id} onClick={(event)=>{
+    lis.push(<li key={t.id}><a id={t.id} href={'/read/'+t.id} onClick={(event)=>{
       event.preventDefault();
+      // id값을 a태그안에 세팅해줘야 아래에서 확인 할 수 있습니다.
+      console.log('event.target.id: ', event.target.id);
       props.onChangeMode(event.target.id);
       // 파라메터값은 몇 번항목을 클릭했는지 전달
     }}>{t.title}</a></li>)
@@ -75,6 +77,7 @@ function App() {
     {id:2, title: 'css', content: 'css is ....'},
     {id:3, title: 'javascript', content: 'javascript is ....'},
   ]);
+  const [id, setId] = useState(null);
   // 다음에 넣을 id를 설정 - hardcoding - 기존에 3개가 있어서 4로 초기값을 주었습니다.
   const [nextId, setNextId] = useState(4);
   
@@ -85,7 +88,15 @@ function App() {
   }
   else if (mode == 'READ') {
     // 리스트에 있는 내용중 하나를 클릭했을때 
-    contents = <Article title="Read" content="Read, Web" />;
+    let title, content;
+    for (let i = 0 ; i<topics.length ; i++) {
+      if (topics[i].id == id) {
+        title = topics[i].title;
+        content = topics[i].content;
+      }
+    }
+    contents = <Article title={title} content={content} />;
+
   }
   else if (mode == 'CREATE') {
     // Create 링크를 클릭했을때 Create mode로 변경됩니다.
@@ -96,6 +107,9 @@ function App() {
       const newTopics = [...topics];// topics를 복제해서 newTopics를 만듭니다.
       newTopics.push(newTopic);
       setTopics(newTopics);
+      setMode('READ');
+      setId(nextId);
+      setNextId(nextId+1);
     }}/>;//<Create></Create>
   }
   return (
@@ -103,8 +117,11 @@ function App() {
       <Header title="WEB" onChangeMode={() => {
         setMode('WELCOME');
       }}/>
-      <Nav topics={topics} onChangeMode={(id) => {
+      <Nav topics={topics} onChangeMode={(_id) => {
+        console.log('_id: ', _id);//문자열과 변수값을 함께 표시하려면 +를 사용하지 말고, ','로 두값을 구분하여 사용하는것이 좋습니다. +를 사용하면 문자열로 되기때문에 변수가 객체형일경우 값이 보이지 않는다.
         setMode('READ');
+        // 리스트중 클릭한 번호로 id값을 변경합니다.
+        setId(_id);
       }}/>
       {contents}
       <a href="/create" onClick={(event) => {
