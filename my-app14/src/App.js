@@ -1,29 +1,39 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+const ThemeContext = React.createContext('light');
+
 function Button(props) {
   return (
-    <button>{props.theme}</button>
+    <ThemeContext.Consumer>
+      {(value) => {
+        return (<button>{value}</button>);
+      }}
+    </ThemeContext.Consumer>
   );
 }
 
 function ThemedButton(props) {
   return (
-    <Button theme={props.theme} />
+    <Button />
   );
 }
 
 function Toolbar(props) {
   return (
     <div>
-      <ThemedButton theme={props.theme} />
+      <ThemedButton />
     </div>
   );
 }
 
 function App(props) {
   return (
-    <Toolbar theme='dark' />
+    <ThemeContext.Provider value='light'>
+      <Toolbar />
+    </ThemeContext.Provider>
   );
 }
 

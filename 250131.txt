@@ -38,3 +38,26 @@
 우리는 하위컴포넌트로 값을 전달할때 props에 담아서 전달하였습니다.
 -> 단계가 많아졌을때 계속해서 props에 담는 과정이 불편하다.
 -> 컨텍스트: 값을 props에 담지않고 곧바로 하위 element에 전달할 수 있다.
+
+컨텍스트를 사용하는 경우는 루트와 최하위 컴포넌트에 변수를 사용할 때
+중간단계에도 변수값을 사용한다면 props로 전달하는 것이 유리합니다.
+
+-- 컨텍스트 생성
+const MyContext = React.CreateContext(기본값);
+-- 하위컴포넌트에서 받을수 있는 값을 세팅
+<MyContext.Provider value={}>
+  하위컴포넌트
+</MyContext.Provider>
+value안에 여러가지 값을 넣으려고 하면?
+value{key1: value1, key2: value2, ...}
+-- 하위컴포넌트가 사용할 때
+<MyContext.Consumer>
+  {(value) => {
+    return (~~~~);
+  }}
+</MyContext.Consumer>
+
+==> 더좋은 사용방법 : useContext() 훅을 사용합니다.
+사용법
+const value = useContext(생성된컨텍스트이름);
+const value = useContext(MyContext);
