@@ -15,7 +15,7 @@ function toFahrenheit(celsius) {
 
 // 변환함수를 선택해서 사용할 수 있느 함수
 function tryConvert(temperature, convert) {
-  const input = parseFloat(temperture);
+  const input = parseFloat(temperature);
   // temperture 입력창에 적힌 내용중 숫자가 아닌 내용이 적혀있으면 NaN이 리턴값으로 넘어옵니다.
   if (Number.isNaN(input)) {
     return '';
@@ -28,15 +28,26 @@ function tryConvert(temperature, convert) {
 
 function Calculator(props) {
   const [temperature, setTemperature] = useState('');
+  const [scale, setScale] = useState('c');
 
-  const handleChange = (event) => {
-    setTemperature(event.target.value);
+  const celsius = (scale == 'f') ? tryConvert(temperature, toCelsius) : temperature;
+  const fahrenheit = (scale == 'c') ? tryConvert(temperature, toFahrenheit) : temperature;
+
+  const handleCelsiusChange = (temperature) => {
+    setTemperature(temperature);
+    setScale('c');
+  }
+
+  const handleFahrenheitChange = (temperature) => {
+    setTemperature(temperature);
+    setScale('f');
   }
 
   return (
     <div>
-      <TemperatureInput scale='c' />
-      <TemperatureInput scale='f' />
+      <TemperatureInput scale='c' temperature={celsius} onTemperatureChange={handleCelsiusChange} />
+      <TemperatureInput scale='f' temperature={fahrenheit} onTemperatureChange={handleFahrenheitChange} />
+      <BoilingVerdict celsius={parseFloat(celsius)} />
     </div>
   );
 }
