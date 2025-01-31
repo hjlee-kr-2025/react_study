@@ -31,11 +31,12 @@ import WelcomeDialog from './ch13/WelcomeDialog';
 import DarkOrLight from './ch14/DarkOrLight';
 import MainPage from './ch15/MainPage';
 import Sample from './ch15/Sample';
+import Blocks from './ch15/Blocks';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // setInterval(실행함수, 반복실행시간ms);
 root.render(
-    <Sample />
+    <Blocks />
 );
 
 // If you want to start measuring performance in your app, pass a function

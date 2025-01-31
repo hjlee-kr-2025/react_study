@@ -101,3 +101,20 @@ styled-components 라이브러리를 만들었습니다.
 yarn add styled-components [enter]
 
 --styled-componets에서는 태그드 탬플릿 리터럴을 사용합니다.
+
+*** Rract에서 스타일을 주려면 컴포넌트에 sytle속성에 {스타일값} 객체를 사용합니다.
+예) <div style={{border: "1px solid black"}}></div>
+스타일속성의 이름은 '-'를 사용할 수 없어서 '-'를 빼고 다음글자를 대문자로 적용합니다.
+예) background-color  ->   backgroundColor
+=> 불편하다.. 
+그래서 만든것이 styled-components 라이브러리입니다.
+사용예)
+스타일이 적용되는 컴포넌트를 만든다.(이름의 첫글자를 대문자) 
+styled.태그``; (태그 뒤에는 백틱사용 - 키보드 tap키 위에 있는 버튼)
+const Wrapper = styled.div`
+  border: 1px solid black;
+  background-color: blue;
+  color: white;
+  ...
+`;
+백틱안에는 CSS문법과 동일하게 스타일을 적용하시면 됩니다.
