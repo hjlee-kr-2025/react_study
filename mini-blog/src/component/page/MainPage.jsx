@@ -31,7 +31,24 @@ function MainPage(props) {
 
   return (
     <Wrapper>
-      
+      <Container>
+        <Button title="글 작성하기"
+          onClick={() => {
+            // 글 작성하기 버튼을 클릭하면 글작성 페이지로 이동동.
+            navigate('/post-write');
+          }}
+        />
+
+        <PostList posts={data}
+          onClickItem={(item) => {
+            // 리스트중 하나를 클릭했을때 글보기 페이지로 이동.
+            navigate(`/post/${item.id}`);
+            // ('/post/' + item.id)
+          }}
+        />
+      </Container>
     </Wrapper>
   );
 }
+
+export default MainPage;
