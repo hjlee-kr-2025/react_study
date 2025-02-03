@@ -57,6 +57,7 @@ function PostWritePage(props) {
           onClick={() => {
             // 글 작성후 버튼을 누르면 홈으로 갑니다.
             navigate("/");
+            // 글 작성하기를 누르면 작성된 글이 저장되도록 프로그램을 구현합니다. 여기서는 흐름만 보여주기위해 홈으로 이동합니다.
           }}
         />
       </Container>

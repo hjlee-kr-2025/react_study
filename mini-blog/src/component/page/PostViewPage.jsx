@@ -51,6 +51,7 @@ const CommentLabel = styled.p`
 function PostViewPage(props) {
   const navigate = useNavigate();
   const { postId } = useParams();// 글번호
+  // postId는 Route path에 ":postId" 를 가져옵니다.
 
   // 댓글에 관련된 변수
   const [comment, setComment] = useState('');

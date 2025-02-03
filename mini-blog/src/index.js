@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// React 가상돔을 생성.
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// 가상돔 -> 브라우저돔 (화면에 랜더링)
 root.render(
-  <React.StrictMode>
     <App />
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
