@@ -63,3 +63,5 @@ function PostWritePage(props) {
     </Wrapper>
   );
 }
+
+export default PostWritePage;

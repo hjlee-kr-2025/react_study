@@ -47,3 +47,54 @@ const CommentLabel = styled.p`
   font-size: 16px;
   font-weight: 500;
 `;
+
+function PostViewPage(props) {
+  const navigate = useNavigate();
+  const { postId } = useParams();// 글번호
+
+  // 댓글에 관련된 변수
+  const [comment, setComment] = useState('');
+
+  // 글번호와 같은 데이터를 post변수에 넣는다.
+  const post = data.find((item) => {
+    return item.id == postId;
+  });
+
+  return (
+    <Wrapper>
+      <Container>
+        <Button 
+          title="뒤로 가기"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+
+        <PostContainer>
+          <TitleText>{post.title}</TitleText>
+          <ContentText>{post.content}</ContentText>
+        </PostContainer>
+
+        <CommentLabel>댓글</CommentLabel>
+        <CommentList comments={post.comments} />
+
+        <TextInput 
+          height={40}
+          value={comment}
+          onChange={(event) => {
+            setComment(event.target.value);
+          }}
+        />
+
+        <Button 
+          title="댓글 작성하기"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+      </Container>
+    </Wrapper>
+  );
+}
+
+export default PostViewPage;
