@@ -1,0 +1,311 @@
+CSS (Cascade Style Sheet)
+- 우리가 사용하는 것은 : CSS3 기준
+- CSS 구조
+선택자 {
+  속성: 속성값;
+}
+- CSS의 주석 : /* 이곳에 주석을 적습니다 */
+
+** 스타일적용 우선순위 - 스타일 사용 방법
+1. 인라인스타일 - 태그안에 style속성으로 스타일을 구현
+예)
+<p style="color: red;">글자는 빨간색</p>
+- style속성에 여러가지 스타일을 주려면 스타일속성을 ;으로 구별하여 사용하시면 됩니다.
+<p style="color: red; font-size: 20px;">빨간색 20px크기</p>
+2. 스타일태그안에 구현
+<style>
+  이곳에 스타일구현
+</style>
+사용예) 모든 p태그의 글씨크기를 20px, 색상을 흰색, 배경을 검은색
+<style>
+  p {
+    font-size: 20px;
+    color: white;
+    background-color: black;
+  }
+</style>
+3. 스타일 외부파일에 구현하고 html에서 <link> 태그로 불어옵니다.
+예) style.css 파일에 스타일이 구현되어 있다면
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  ==> css 파일안에 style태그는 사용하지 않고 스타일 내용만 기술합니다.
+4. 브라우저 기본 스타일
+
+(기본선택자-우선순위를 기준으로)
+1. id선택자 - '#id값' 으로 선택자로 사용됩니다.
+예)
+html 문서에
+    <p>이 문서의 첫번째 단락입니다</p>
+    <p id="bluefont">이 문서의 두번째 단락입니다</p>
+스타일에 아래와 같이 구현하면
+#bluefont {
+  color: blue;
+}
+
+==> "이 문서의 두번째 단락입니다" : 파란색으로 글씨를 보여줍니다.
+id선택자의 가장 큰특징은 하나만 적용이 된다.
+
+2. class선택자 - '.클래스값' 으로 선택자로 사용됩니다.
+예)
+  <div class="box">box1</div>
+  <div class="box">box2</div>
+  <div>box3</div>
+스타일을 아래와 같이 구현하면
+.box {
+  border: 1px solid blue;
+}
+==> box1 과 box2 만 파란색테두리선을 갖습니다.
+==> 같은 클래스이름을 갖는 모든 element가 동일한 style이 적용됩니다.
+3. 타입선택자(태그선택자) - '태그' 를 선택자로 사용합니다.
+예)
+  <div class='box'>box1</div>
+  <div class='box'>box2</div>
+  <div>box3</div>
+ 위 내용의 스타일을 아래와 같이 적용하면
+ div {
+  border: 1px solid blue;
+ }
+ ==> box1, box2, box3 에 파란색 테두선이 구현됩니다.
+ ==> 같은 태그이름을 갖는 모든 element에 스타일이 적용됩니다.
+4. 전체선택자 - '*' 를 선택자로 사용합니다.
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+여러선택자를 동시에 같은스타일로 적용하려면?
+table, td, th {
+  border: 1px solid grey;
+}
+===> 선택자 사이에 ,로 구분하여 적으면 동시에 스타일이 적용됩니다.
+
+스타일속성
+- font-family: <글꼴이름>;
+    *글꼴이름이 여러개 들어가면 ,로 구분해서 적습니다.
+    *제일앞에부터 사용자컴퓨터에 있는 폰트가 적용됩니다.
+    *두단어 이상으로 되어있는 폰트이름은 '' 또는 ""로 묶어서 적습니다.
+
+- font-size: <절대크기px> | <상대크기em> | <백분율%>;
+    * 단위와 함께 사용이 됩니다.: px, em(rem), %
+
+- font-style: normal(기본) | italic;
+    * italic으로 적용할때만 주로 사용됩니다.
+
+- font-weight: normal | bold | lighter | 100 | 200 | ... | 900;
+    * 숫자는 100 이 가장 얇은 글씨, 900이 가장 굵은 글씨
+
+- text-decoration: none | underline | line-through;
+    * 글씨에 줄없음, 글씨에 아래줄, 글씨에 중간줄(삭제줄)
+
+- text-align: left | right | center | justify;
+    * 왼쪽정렬, 오른쪽정렬, 가운데정렬, 양쪽정렬 => 가로기준
+
+- line-height: <크기>;
+    * 줄간격을 설정할 때 사용합니다.
+    * font-size: 16px; 설정된 문장에서 줄간격을 글씨 크기만큼 주려면?
+      => line-height: 32px; 로 설정하면 됩니다.(2.0 or 200% 동일)
+
+- letter-spacing: <크기>;
+    * 글자간격(자간)
+    * 한글자의 간격만큼 주려면 50%로 설정해야 합니다.
+
+- color: <색상값>; - 글씨 색상을 지정할때
+    * 색상값 - 16진수표현법  (#FFF, #FFFFFF), 세자리는 RGB가 한자리씩, 6자리는 RGB가 2자리씩 차지합니다.
+            - rgb(R, G, B); 각 색상별 0~255 의 값을 적용할 수 있습니다.
+            - rgba(R, B, B, A); A값은 투명도를 설정합니다.
+            - 색상이름으로 : white, black, red, blue, green등.. (CSS3 140의 색상이름이 있습니다.)
+            - 색상을 선택할 때 color picker를 사용하시면 편리합니다.
+
+- list-style-type: disc | circle | square | none | decimal | lower-roman | upper-roman | lower-alpha | upper-alpha;
+    * <ol>, <ul> 모두 list-style-type을 설정할 수 있습니다.
+
+- list-style-image: url('이미지경로');
+    * 이미지블릿을 적용합니다.
+
+- list-style-position: outside(기본) | inside;
+    * inside는 목록을 들여쓰기합니다.
+
+- caption-side: top(기본) | bottom;
+    * 표의 제목을 표 아래로 보낼때 사용합니다.
+
+** 레이아웃을 구성할때 사용하는 스타일
+- 박스모델의 기본요소
+  margin border padding content(text)
+
+- width: <크기>;  - 폭의 크기를 설정합니다.
+- height: <크기>; - 높이의 크기를 설정합니다.
+- box-sizing: border-box | content-box(기본값); - 크기를 설정할때 어디까지로 하는것에 대한 설정
+* 테두리에 관련된 스타일
+- border-style: none(기본값) | solid(실선) | dotted(점선) | dashed(짧은실선) | double(이중선);
+- border-width: <크기>; - 테두리선 굵기
+- border-color: <색상값>; - 테두리선 색상
+==> 위 세가지 속성을 4방향을 각각 설정할 수 있습니다. 4개의 값을 적으면 위, 오른쪽, 아래, 왼쪽순으로(시계방향) 적용됩니다.
+- border: <크기> <스타일> <색상값>; - 세가지 속성을 한꺼번에 설정할 때 사용합니다. 
+- border-radius: <크기>; - 모서리를 둥글게 만들어줍니다.
+    * 박스사이즈 정사각형으로 하고 border-radius: 50%;로 설정하면 원이 됩니다.
+
+- margin: <크기>; - 외부여백 (border바깥의 여백)
+    * 4방향을 각각 지정할 수 있다.
+    * 가운데 정렬을 하고자할때 margin: 0 auto; 로 설정해서 좌/우를 auto로 설정하면 가운데 정렬이 됩니다.
+- padding: <크기>; - 내부여백 (border와 컨텐츠사이의 여백)
+    * 4방향을 각각 설정할 수 있다.
+
+  ** margin, padding의 4방향중 한방향을 개별적으로 설정하고 싶을때?
+  -top, -bottom, -right, -left 를 붙여서 설정할 수 있습니다.
+
+- margin  중첩 - margin이 위/아래 만났을때 둘중 설정값이 큰값으로 정해집니다.
+
+- display: none | block | inline | inline-block;
+    * 화면에 표시x , 블럭레벨요소, 인라인레벨요소, 인라인인데 사이즈조절가능
+- float: left | right;
+    * 화면의 왼쪽 또는 오른쪽 우선배치
+- clear: left | right | both;
+    * float속성을 해제
+
+- position: static | relative | absolute | fixed;
+    *  기본값, 상대배치, 절대배치(상대배치속), 브라우저기준절대배치
+- left, right, top, bottom 속성을 기준으로 부터 떨어진 위치를 표시할 때 사용합니다.
+    * left, right를 동시에 사용x
+    * top, bottom을 동시에 사용x
+
+(( 배경 ))
+- background-color: <색상값>; - 배경색을 지정합니다.
+- background-clip: border-box | padding-box | content-box;
+    * 배경색의 지정범위 설정
+- background-image: url('이미지경로');
+    * 배경이미지를 넣습니다.
+- background-repeat: repeat(기본) | repeat-x | repeat-y | no-repeat;
+    * 배경이미지가 작을때 배경을 채울때 까지 반복해서 적용
+    * 가로축만 반복
+    * 세로축만 반복
+    * 한장만 사용
+- background-position: <수평위치> <수직위치>;
+- background-origin: border-box | padding-box | content-box;
+    * 배경이미지의 적용범위 설정
+- background-attachment: scroll(기본) | fixed;
+    * 마우스 위아래로 스크롤하면 따라온다, 위치고정
+- background-size: auto | contain | cover | <크기> | <백분율>;
+    * auto: 기본값
+    * contain: 이미지의 크기가 긴쪽에 맞추고 나머지를 비율대로 조정 - 배경에 빈 공간의 생깁니다.(그림은 다보인다)
+    * cover: 이미지의 작은쪽을 배경에 맞추고 나머지를 비율대로 조정 - 큰쪽의 이미가 잘려서 보입니다. (배경의 빈공간은 없습니다)
+
+((( 고급선택자 )))
+- 하위선택자
+상위요소 하위요소 {
+
+}
+- 자녀선택자
+부모요소 > 자녀요소 {
+
+}
+==> 아래와 같은 html문서가 있습니다.
+  <div>
+    <h1>제목</h1>
+    <ul>
+      <li><h1>내용1</h1></li>
+      <li><h1>내용2</h1></li>
+    </ul>
+    <h1>제목2</h1>
+  </div>
+1) 하위선택자 - 제목, 내용1, 내용2, 제목2 가 모두 파란색으로
+div h1 {
+  color: blue;
+}
+2) 자식선택자 - 제목, 제목2 만 파란색글씨로 적용됩니다.
+div > h1 {
+  color: blue;
+}
+
+** 인접형제/형제 선택자에서 기준이되는 요소1은 스타일이 적용되지 않습니다.
+- 인접형제 선택자 -> 처음만나는 하나만 적용
+요소1 + 요소2 {
+
+}
+- 형제 선택자 -> 형제중 요소2 전부 적용용
+요소1 ~ 요소2 {
+
+}
+==> 아래와 같은 html 이 있습니다.
+  <h1>제목1</h1>
+  <p>내용1</p>
+  <p>내용2</p>
+  <p>내용3</p>
+1) 내용1 만 파란색글씨
+  h1 + p {
+    color: blue;
+  }
+2) 내용1, 내용2, 내용3 -> 파란색글씨
+  h1 ~ p {
+    color: blue;
+  }
+
+(속성선택자)
+a[href] {
+
+}
+==> a 태그중 href 가 있는 요소를 선택합니다.
+예) a[target] { } => a태그에 target속성이 존재하면 스타일적용
+
+a[href="www.naver.com"] {
+
+}
+==> a 태그중 href속성값이 www.naver.com 인경우 스타일적용
+
+[class ~= 'button'] {
+
+} => class값으로 button이 존재하면 스타일 적용
+
+[href $= 'xls'] {
+
+} => href 속성값의 끝이 xls로 끝나는 경우 스타일 적용
+
+(가상클래스와 가상요소)
+선택자:hover {
+
+} => 마우스커서가 요소위에 올라갔을때 스타일 적용
+선택자:checked {
+
+} => checked속성이 있는 경우 스타일 적용(라디오버튼, check-box)
+
+:not() {
+
+} => ()의 내용을 제외하고 스타일 적용
+
+((( 트랜지션 )))
+- transform: 함수; 
+    * 이동, 확대/축소, 회전
+    * translate(), scale(), rotate()
+
+- transition ==> 스타일을 변경시키는 속성
+- transition-property ==> 트랜지션 대상
+- transition-duration ==> 변경될때의 시간
+- transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out; ==> 트랜지션효과의 속도곡선
+- transition-delay => 효과적용를 기다리는 시간입력
+
+(( 반응형웹과 미디어쿼리))
+-> 브라우저 가로사이즈에 맞춰 배치가 자동으로 변경되는 웹
+-> 미디워쿼리를 사용해서 사이즈 별로 스타일을 다르게 적용할 수 있다.
+
+--그리드 레이아웃 : flex레이아웃, css 그리드 레이아웃
+flex박스레이아웃
+- 컨테이너에 박스를 넣듯이 배치하는 것
+- 부모요소에 display: flex; 로 설정되어야 합니다.
+CSS 그리드 레이아웃
+- 레고블럭 맞추듯이 배치되는것
+- 부모요소에 display: grid; 로 설정되어야 합니다.
+- 전체적인 크기(가로)를 지정하고 사용합니다.
+
+
+<< flex >>
+- flex-direction: row | row-reverse | column | column-reverse;
+    * 박스 배치 순서
+- flex-wrap: nowrap | wrap | wrap-reverse;
+    * 여러줄 배치를 할것인가?
+- justify-content: flex-start | flex-end | center | space-between | space-around;
+    * 가로축 정렬에 관련된 설정
+- align-items: flex-start | flex-end | center | baseline | stretch;
+    * 세로축 정렬에 관련된 설정
+

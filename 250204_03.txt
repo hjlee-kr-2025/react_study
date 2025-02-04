@@ -1,0 +1,234 @@
+자바스크립트
+- 웹의 동작에 관련된 모든것
+
+<script>
+  /* 이곳에 자바스크립트 코드를 작성합니다 */
+</script>
+
+<script> 태그는 <head> or <body> 태그안에 구현을 합니다.
+
+외부파일로 자바스크립트를 작성하고 html문서로 가져올수가 있는데
+<script src="파일이름"><script> 로 가져옵니다.
+
+자바스크립트는?
+1. 명령문 끝에 ';'를 붙입니다.
+2. 대소문자를 구별합니다.
+3. 주석은
+      // 한줄주석
+      /* 여러줄주석 */
+
+4. 변수 - 값이 담기는 공간 - 이름을 사용합니다.
+  - 변수이름은 영문자, 숫자, _ 를 사용할 수 있고, 숫자는 제일앞에 올수 없습니다.
+  - 변수이름은 camel 표기법, _ 표기법을 많이 사용합니다.
+  - 변수의 선언은 var 예약어를 사용합니다. (let 도 사용할 수 있습니다.)
+  var 변수이름;
+  var 변수이름 = 초기값;
+  var 변수이름1, 변수이름2;
+  - var 예약어는 자료형에 관계없이 사용합니다.
+
+  변수의 자료형은 존재합니다.
+  - 숫자형(number)
+  - 문자형(string)
+  - 논리형(boolean)
+  - 배열(array)
+  - 객체형(object)
+
+** 연산자
+@   +, -, *, /, % : 덧셈, 뺄셈, 곱셈, 나눗셈, 나머지
+@   = : 오른쪽에 있는(처리된) 값을 왼쪽에 대입(저장)한다. - 대입연산자
+@ 비교연산자: >, <, >=, <=, ==(같다), !=
+@ 논리연산자: &&(and), ||(or) , !(not)
+
+** 조건문
+1)
+if (조건) {
+  참일때 처리;
+}
+2)
+if (조건) {
+  참;
+}
+else {
+  거짓;
+}
+3)
+if (조건1) {
+  조건1 참;
+}
+else if (조건2) {
+  조건1 거짓, 조건2 참;
+}
+else {
+  조건1 거짓, 조건2 거짓;
+}
+
+** 3항연산자
+(조건) ? 참 : 거짓;
+
+** switch
+switch (변수) {
+  case 값1:
+    변수 == 값1;
+    break;
+  case 값2:
+    변수 == 값2;
+    break;
+  default:
+    case에 존재하지 않는값일때;
+}
+==> case 에 들어가는 값은 중복된 값이 들어갈 수 없습니다.
+
+** 반복문
+
+** for문
+for (초기값세팅 ; 비교 : 비교값증가 or 감소) {
+  비교가 참일때 반복처리하는 내용;
+}
+-- 가장 많이 쓰는 유형
+seasons = ['봄', '여름', '가을', '겨울'];
+for (let i = 0 ; i < seasons.length ; i++) {
+  console.log('계절: ',seasons[i]);
+}
+
+**  while문
+while (조건) {
+  조건이 참일때 계속 반복 실행;
+}
+while (true) {
+  // 무한반복실행
+}
+
+** 함수
+function 함수이름() {
+  함수에서 처리될 코드;
+}
+==> 함수이름(매개변수) -> 매개변수는 0개 이상 들어갈 수 있습니다.
+==> 함수에서 처리될 코드를 실행하고 return 값을 줄 수 있습니다.(없어도 함수입니다.)
+
+** 내장함수 - javascript에 기본적으로 구현되어있는 함수
+- alert('알림메시지'); => 알림메시지가 알람창에 나타나도록 합니다.
+- var result = confirm("확인메시지");
+- var result = propmt("값을 입력해 주세요");
+- console.log("콘솔창에 보여요"); - 개발자가 디버깅할 때 많이 사용합니다.
+
+** 익명함수
+var sum = function(number1, number2) {
+  return number1 + number2;
+}
+===> 위 익명함수를 정의한것을 사용해보겠습니다.
+var result = sum(3, 5);
+=> result에는 8이 담깁니다.
+=> 함수로 정의한 것과 사용방법이 동일합니다.
+** 익명함수는 화살표함수로 표현할 수도 있습니다.
+var sum = (number1, number2) => {
+  return number1 + number2;
+}
+
+** 이벤트
+- 이벤트의 등록은 html 태그에 속성으로 등록합니다.
+- 속성은 이벤트 이름앞에 on 을 붙여서 사용됩니다.
+ 예) onclick, onchange, onsubmit, ...
+ 사용> <button onclick="alert('버튼을 클릭했어요.')">클릭버튼</button>
+- 자바스크립트의 <script> 태그안에 DOM속성을 이용해서 등록할 수도 있습니다.
+  사용> html
+  <button id="change">글자색 바꾸기</button>
+  <p>여기에 있는 문장색이 변경됩니다.</p>
+  ==>
+  <script>
+  var changeBtn = document.getElementById('change');
+  changeBtn.onclick = () => {
+    document.querySelector("p").style.color = "blue";
+  }
+  </script>
+
+
+((( 객체 )))
+-- 변수, 함수가 포함되어있다.
+var seasons = ['봄', '여름', '가을', '겨울'];
+seasons.length => 어레이에 들어간 값이 몇개인지가 저장
+
+window객체
+- 화면에 관계된 내용을 확인할 때
+- 팝업창을 만들거나, 브라우저 위치 지정할 때
+
+DOM (Document Object Model)
+- 트리구조로 문서가 구성되어 있습니다.
+- 자바스크립트를 통해서 html문서의 제어를 쉽게 하도록 만든것
+- CSS에서 사용한 선택자를 통해 element에 접근할 수 있다.
+
+DOM 트리 노드
+- element
+- attribute(속성)
+- text
+
+DOM요소(element) 에 접근 - 선택자를 사용
+- document.querySelector("선택자"); -> 1개만 가져옵니다. 같은 이름이 여러개이면 제일 위에 있는 element를 선택합니다.
+- document.querySelectorAll("선택자"); -> 선택자에 class or 태그이름을 사용합니다. -> 모든요소를 가져오는데 사용할 때는 배열처럼 사용하면 됩니다.
+
+html문서
+ <div class="box" id="box1">box1</div>
+ <div class="box" id="box2">box2</div>
+ <div class="box" id="box3">box3</div>
+ <div class="box" id="box4">box4</div>
+ <div class="box" id="box5">box5</div>
+==>
+  <script>
+    var box = document.querySelectorAll(".box");
+    // 자바스크립트에서는 한번에 스타일을 적용할 수가 없습니다.
+    for (let i = 0 ; i < box.length ; i++) {
+      box[i].style.border = "1px solid grey";
+    }
+  </script>
+
+- document.getElementById('id값'); => #없이 사용합니다. -> 한개만 가져옵니다.
+- document.getElementsByClassName('class값'); => .없이 사용합니다. -> 배열형태로 인덱스와 함께 사용합니다.(1개를 찾아도)
+- document.getElementsByTagName('태그이름'); => 배열형태로 인덱스와 함께 사용합니다.(1개여도)
+ 예)
+ html문서
+ <div>box1</div>
+==>
+  <script>
+  var box = document.getElementsByTagName('div');
+  box[0].style.border = "1px solid grey";
+  </script>
+    => div가 하나 있습니다.
+    => 사용할때 box[0] 으로 사용합니다.
+
+** 웹요소의 내용 수정하는 속성: <시작태그>웹요소내용<종료태그>
+- innerText : 모든 글자가 텍스트입니다.
+- innerHTML : 태그는 element로 변경되고 나머지 글자는 텍스트로 변경됩니다.
+예)
+html
+  <p id="name"></p>
+  ==>
+  <script>
+  var name = document.getElementById("name");
+  1) name.innerText = "저는 <b>이현진</b>입니다."
+  ==> 화면에 '저는 <b>이현진</b>입니다.'
+  2) name.innerHTML = "저는 <b>이현진</b>입니다."
+  ==> 화면에 '저는 이현진입니다.' (이현진은 굵은글씨로)
+  </script>
+
+속성을 가져오는 함수: var attr = getAttribute("속성");
+속성을 세팅하는 함수: setAttribute("속성", "속성값");
+
+이벤트를 연결시키는 : addEventListener()메서드
+addEventListener("이벤트", 함수명);
+=> 이벤트에는 on을 붙이지 않습니다.
+
+1. 노드를 만드는 방법
+a) element
+  => createElement("태그명");
+b) text
+  => createTextNode("텍스트");
+c) attribute
+  => 만들어진 element 에 setAttribute() 메서드를 사용해서 세팅
+
+2. 노드의 연결
+부모노드.appendChild(추가노드);
+==> appendChild()메서드는 부모태그의
+ <시작태그>이곳에 위치한다.<종료태그>
+
+3. 노드의 삭제
+부모노드에서 하위노드를 삭제할 수 있습니다.
+부모노드.removeChild(삭제할노드);
